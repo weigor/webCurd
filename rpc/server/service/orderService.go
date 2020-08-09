@@ -14,11 +14,11 @@ func (p *Orderservice) GetOrderList(ctx context.Context, req *dbs.GetOrderReques
 
 	type Order struct {
 		Id       int64
-		OrderNo  string
-		UserName string
+		OrderNo  string `gorm:"column:orderNo" `
+		UserName string `gorm:"column:userName" `
 		Amount   float32
 		Status   string
-		FileUrl  string
+		FileUrl  string `gorm:"column:fileUrl" `
 	}
 	var order = Order{}
 
@@ -27,6 +27,7 @@ func (p *Orderservice) GetOrderList(ctx context.Context, req *dbs.GetOrderReques
 		Select("*").
 		Where("id = ?", req.Id).
 		Find(&order)
+	db.DB.LogMode(true)
 	return &dbs.GetOrderResponse{
 		Id:       order.Id,
 		OrderNo:  order.OrderNo,

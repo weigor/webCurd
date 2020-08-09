@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	fmt.Println("grpc server start--")
+	fmt.Println("grpc 准备开启--")
 	err := db.InitMySQL()
 	if err != nil {
 		panic(err)
@@ -26,5 +26,5 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(listener)
-	fmt.Println("grpc server startup!")
+	fmt.Println("grpc 开启完成!")
 }
