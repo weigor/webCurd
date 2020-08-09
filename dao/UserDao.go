@@ -1,13 +1,15 @@
 package dao
 
 import (
-	db "awesomeProject3/db"
+	"awesomeProject3/db"
 	model "awesomeProject3/model"
+	"github.com/jinzhu/gorm"
 )
 
 type UserDao struct {
 	Order     model.Orders
 	OrderList []model.Orders
+	DB        *gorm.DB
 }
 
 /*
@@ -15,8 +17,8 @@ type UserDao struct {
  */
 // 创建Order
 func (d *UserDao) CreateOrder(order *model.Orders) (err error) {
-	//db.InitMySQL()
-	err = db.DB.Create(&order).Error
+	d.DB = db.DB
+	err = d.DB.Create(&order).Error
 	if err != nil {
 		return err
 	} else {
@@ -32,13 +34,14 @@ func (d *UserDao) FindAll(order *model.Orders) (orderList []*model.Orders) {
 }
 
 //根据ID查询对应model
-func (d *UserDao) GetOrder(id int) (order *model.Orders, err error) {
+func (d *UserDao) GetOrder(id int64) (order *model.Orders, err error) {
 	order = new(model.Orders)
 	if err = db.DB.Where("id=?", id).First(&order).Error; err != nil {
 		return
 	} else {
 		return order, nil
 	}
+	return order, err
 }
 
 //修改model对应的数据
@@ -61,7 +64,6 @@ func (d *UserDao) DeleteOrder(id int) (err error) {
 		return
 	}
 
-
 }
 
 func (d *UserDao) OrderTx(order *model.Orders) (err error) {
@@ -80,5 +82,3 @@ func (d *UserDao) OrderTx(order *model.Orders) (err error) {
 	tx.Commit()
 	return nil
 }
-
-

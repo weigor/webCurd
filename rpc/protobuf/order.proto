@@ -1,0 +1,20 @@
+syntax = "proto3"; // 指定proto版本
+
+package protobuf;
+
+message GetOrderRequest {
+  int64 id=1;
+}
+
+message GetOrderResponse {
+int64  id=1;
+string orderNo=2;
+string userName=3;
+float amount=4;
+string status=5;
+string  fileUrl=6;
+}
+
+service OrderService {
+rpc GetOrderList (GetOrderRequest) returns (GetOrderResponse);
+}
