@@ -34,7 +34,7 @@ func (d *UserDao) FindAll(order *model.Orders) (orderList []*model.Orders) {
 }
 
 //根据ID查询对应model
-func (d *UserDao) GetOrder(id int64) (order *model.Orders, err error) {
+func (d *UserDao) GetOrder(id int) (order *model.Orders, err error) {
 	order = new(model.Orders)
 	if err = db.DB.Where("id=?", id).First(&order).Error; err != nil {
 		return
