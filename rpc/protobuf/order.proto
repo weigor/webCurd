@@ -2,11 +2,18 @@ syntax = "proto3"; // 指定proto版本
 
 package protobuf;
 
+message GetOrderRequests {
+  GetOrderResponses  getOrderResponses=1;
+}
 message GetOrderRequest {
   int64 id=1;
 }
-
 message GetOrderResponse {
+
+repeated GetOrderResponses order=1;
+}
+
+message GetOrderResponses{
 int64  id=1;
 string orderNo=2;
 string userName=3;
@@ -15,6 +22,10 @@ string status=5;
 string  fileUrl=6;
 }
 
+
 service OrderService {
-rpc GetOrderList (GetOrderRequest) returns (GetOrderResponse);
+rpc GetOrderList (GetOrderRequest) returns (GetOrderResponses);
+
+
+
 }

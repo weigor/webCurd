@@ -12,7 +12,7 @@ type Orderservice struct {
 	UserDao dao.UserDao
 }
 
-func (p *Orderservice) GetOrderList(ctx context.Context, req *dbs.GetOrderRequest) (*dbs.GetOrderResponse, error) {
+func (p *Orderservice) GetOrderList(ctx context.Context, req *dbs.GetOrderRequest) (*dbs.GetOrderResponses, error) {
 
 	//type Order struct {
 	//	Id       int64
@@ -32,7 +32,7 @@ func (p *Orderservice) GetOrderList(ctx context.Context, req *dbs.GetOrderReques
 	//	Find(&order)
 
 	db.DB.LogMode(true)
-	return &dbs.GetOrderResponse{
+	return &dbs.GetOrderResponses{
 		Id:       order.Id,
 		OrderNo:  order.OrderNo,
 		UserName: order.UserName,

@@ -11,6 +11,7 @@ require (
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/tealeg/xlsx v1.0.5
+	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e
 	google.golang.org/grpc v1.31.0
 	google.golang.org/protobuf v1.25.0
 )
