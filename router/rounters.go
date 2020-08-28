@@ -12,7 +12,7 @@ func UserRounter() *gin.Engine {
 	r := gin.Default()
 
 
-	e := echo.New()
+	e := echo.Neww()
 sssssssssssssddddddduuuuuuuuu
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
