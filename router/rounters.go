@@ -14,7 +14,6 @@ func UserRounter() *gin.Engine {
 
 	e := echo.New()
 
-	//aaaaaaaaaaaaaaaaaa
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	r.GET("/upLoad", UserHandle.Export)
